@@ -12,7 +12,7 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Date = table.Column<DateTime>(nullable: false),
                     EstimatedStartTime = table.Column<DateTime>(nullable: false),
                     EstimatedEndTime = table.Column<DateTime>(nullable: false),
