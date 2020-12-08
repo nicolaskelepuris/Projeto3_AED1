@@ -42,6 +42,7 @@ namespace API.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(ResponseDto<UserDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseDto<string>), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ResponseDto<string>), StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<ResponseDto<Pagination<UserDto>>>> GetUsers([FromQuery] UsersSpecificationParams usersSpecificationParams)
         {
             var user = await _userManager.FindUserByEmailAsyncFromClaimsPrincipal(HttpContext.User);
@@ -225,6 +226,7 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ResponseDto<UserResponseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseDto<string>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ResponseDto<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseDto<string>), StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<ResponseDto<UserResponseDto>>> UpdatePhoneNumber([FromBody] UpdateUserPhoneNumberDto updateUserPhoneNumberDto, [FromRoute]string id)
         {
             var user = await _userManager.FindUserByEmailAsyncFromClaimsPrincipal(HttpContext.User);
@@ -271,6 +273,7 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ResponseDto<UserResponseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseDto<string>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ResponseDto<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseDto<string>), StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<ResponseDto<UserResponseDto>>> UpdateEmail([FromBody] UpdateUserEmailDto updateUserEmailDto, [FromRoute]string id)
         {
             var user = await _userManager.FindUserByEmailAsyncFromClaimsPrincipal(HttpContext.User);
@@ -317,6 +320,7 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ResponseDto<UserResponseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseDto<string>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ResponseDto<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseDto<string>), StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<ResponseDto<UserResponseDto>>> UpdatePassword([FromBody] UpdateUserPasswordDto updateUserPasswordDto, [FromRoute]string id)
         {
             var user = await _userManager.FindUserByEmailAsyncFromClaimsPrincipal(HttpContext.User);

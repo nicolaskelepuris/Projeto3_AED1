@@ -26,6 +26,8 @@ namespace API.Controllers
         }
 
         [HttpPost("login")]
+        [ProducesResponseType(typeof(ResponseDto<UserResponseDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseDto<string>), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ResponseDto<UserResponseDto>>> Login([FromBody] LoginDto loginDto)
         {
             var user = await _userManager.FindByEmailAsync(loginDto.Login);
